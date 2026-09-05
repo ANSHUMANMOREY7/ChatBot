@@ -19,7 +19,6 @@
                     <input
                         placeholder="send a message to ChatBot"
                         size="30" />
-                    <button>Send</button>
                 </>
             );
         }
@@ -52,8 +51,13 @@
             { message: "Can you get me todays Date?", sender: "user",id: 3 },
             { message: "Today is September 5 2026", sender: "robot",id: 4 }]
 
+            function SendMessage(){
+                console.log("Message sent");
+            }
             return(
                  <>
+            <button onClick={SendMessage}>send</button>
+
            { chatmessages.map((chatMessage) => {
                 return (
                     
