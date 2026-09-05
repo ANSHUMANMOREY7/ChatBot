@@ -44,28 +44,36 @@
                 </div>
             );
         }
-        function App() {
-
+        function ChatMessages()
+         {
             const chatmessages = [
             { message: "hello chatbot", sender: 'user',id: 1 },
             { message: "how can i help you?", sender: "robot",id: 2 },
             { message: "Can you get me todays Date?", sender: "user",id: 3 },
             { message: "Today is September 5 2026", sender: "robot",id: 4 }]
 
-            const ChatMessageComponents = chatmessages.map((chatMessage) => {
+            return(
+                 <>
+           { chatmessages.map((chatMessage) => {
                 return (
+                    
                     <ChatMessage
                         message={chatMessage.message}
                         sender={chatMessage.sender} 
                         key={chatMessage.id}/>
                 );
 
-            });
+            })}
+            </>
+        );
+        }
+    
 
+           function App() {
             return (
                 <>
                     <ChatInput />
-                    {ChatMessageComponents}
+                    <ChatMessages />
                 </>
             )
         }
