@@ -33,8 +33,22 @@
     }
     .chat-input-container{
         display: flex;
-        margin-bottom: 60px;
+        margin-top: 20px;
+        margin-bottom: 20px;
         
+    }
+    .input-position-control{
+        align-self: center;
+        margin: 20px 0;
+        padding: 0;
+        border: none;
+        background: none;
+        color: #267a56;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    .input-position-control:hover{
+        text-decoration: underline;
     }
     .app-container{
         max-width: 600px;
@@ -189,20 +203,28 @@
                 { message: "Can you get me todays Date?", sender: "user", id: 3 },
                 { message: "Today is September 5 2026", sender: "robot", id: 4 }]
             );
+            const [inputAtTop, setInputAtTop] = React.useState(true);
            // const[chatMessages , setChatMessages]= array;
            // const chatMessages = array[0];
            //const setChatMessages = array[1];
 
             return (
                 <div className="app-container">
-                    
-                    <ChatMessages
-                    chatMessages={chatMessages}
-                    />
-                    <ChatInput 
-                    chatMessages={chatMessages}
-                    setChatMessages={setChatMessages}
-                    />
+                    {inputAtTop && <ChatInput
+                        chatMessages={chatMessages}
+                        setChatMessages={setChatMessages}
+                    />}
+                    <ChatMessages chatMessages={chatMessages} />
+                    {!inputAtTop && <ChatInput
+                        chatMessages={chatMessages}
+                        setChatMessages={setChatMessages}
+                    />}
+                    <button
+                        className="input-position-control"
+                        onClick={() => setInputAtTop(!inputAtTop)}
+                    >
+                        {inputAtTop ? 'Move input below messages' : 'Move input above messages'}
+                    </button>
                 </div>
             )
         }
